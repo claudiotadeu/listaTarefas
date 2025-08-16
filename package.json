@@ -1,0 +1,14 @@
+{
+  "name": "listatarefas",
+  "version": "1.0.0",
+  "description": "Projeto NoSql Mongo Ejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "Claudio Tadeu Severino",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
