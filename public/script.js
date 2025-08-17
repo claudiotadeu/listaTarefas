@@ -1,1 +1,1 @@
-alert("Mensagem Alerta funcionando!")
+// alert("Mensagem Alerta funcionando!")
