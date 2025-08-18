@@ -10,6 +10,14 @@
 </head>
 
 <body>
+    <% if (mensagem != "") { %>
+    <section class="mensagem mensagem-<%= tipoMensagem %>">
+        <p><%= mensagem %></p>
+        <span id="fechar-mensagem"><i class="bi bi-x"></i></span>
+
+    </section>
+    <% } %>
+
     <header>
         <% if (tarefa == null) { %>
             <h1>LISTA DE TAREFAS</h1>
