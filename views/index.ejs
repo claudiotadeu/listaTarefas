@@ -4,21 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Lista de Tarefas</title>
 </head>
 
 <body>
     <header>
         <% if (tarefa == null) { %>
+            <h1>LISTA DE TAREFAS</h1>
             <form action="/create" method="post">
                 <input type="text" name="tarefa" id="tarefa" placeholder="Insira uma tarefa">
                 <button id="btnAdicionar" type="submit">Adicionar</button>
             </form>
             <% } else { %>
+                <h1>EDITAR TAREFAS</h1>
                 <form action="/updateOne/<%= tarefa._id %>" method="post">
                     <input type="text" name="tarefa" id="tarefa" value="<%= tarefa.tarefa %>">
-                    <button id="btnAdicionar" type="submit">Atualizar</button>
+                    <button id="btnAtualizar" type="submit">Atualizar</button>
                 </form>
                 <% } %>
     </header>
@@ -27,9 +30,14 @@
         <ul>
             <% listaTarefas.forEach((tarefa)=> {%>
                 <li>
-                    <%= tarefa.tarefa %> | <%= tarefa.date.toLocaleDateString('pt-BR') %>
-                            <a href="/getById/<%= tarefa._id %>/update">Editar</a>
-                            <a href="/getById/<%= tarefa._id %>/delete">Apagar</a>
+                    <div>
+                        <a href="/"><%= tarefa.tarefa %>  </a>
+                        <span>Criado em <%= tarefa.date.toLocaleDateString('pt-BR') %></span>
+                    </div>
+                    <div>
+                        <a class="btnUpdate" href="/getById/<%= tarefa._id %>/update"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btnDelete" href="/getById/<%= tarefa._id %>/delete"><i class="bi bi-trash"></i></a>
+                    </div>
                 </li>
                 <% }) %>
         </ul>
@@ -38,13 +46,18 @@
     <% if (tarefaDelete != null) { %>
     <section id="modal">
         <div id="card ">
+            <div id="head">
+                <h2>Confirmação</h2>
+                <a id="fecharModal" href="/"><i class="bi bi-x"></i></a>
 
-            <a href="/">x</a>
-            <h2>Confirmação</h2>
+            </div>
+
             <hr>
             <p>Deseja realmente apagar a tarefa: <%= tarefaDelete.tarefa %>? </p>
-            <a href="/">Não</a>
-            <a href="/deleteOne/<%= tarefaDelete._id %>">Sim</a>
+            <div id="btns">
+                <a id="btnNot" href="/">Não</a>
+                <a id="btnYes" href="/deleteOne/<%= tarefaDelete._id %>">Sim</a>
+            </div>
 
         </div>
     </section>
