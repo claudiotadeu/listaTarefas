@@ -172,7 +172,7 @@ div#head a#fecharModal:hover {
 
 div#card hr {
   width: 90%;
-  margin: auto;
+  margin-bottom: 5rem;
   background-color: #ccc;
 }
 
@@ -181,6 +181,7 @@ div#card p {
   text-align: center;
   font-size: 1.5rem;
   line-height: 2rem;
+  margin-top: 10rem;
 }
 
 div#btns {
