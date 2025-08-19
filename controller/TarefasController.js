@@ -91,10 +91,25 @@ const deleteOneTarefa = async (req, res) => {
   }
 };
 
+const tarefaCheck = async (req, res) => {
+  try {
+    const tarefa = await Tarefa.findOne({ _id: req.params.id });
+
+    //Condocional Ternária
+    tarefa.check ? tarefa.check = false : tarefa.check = true;
+
+    await Tarefa.updateOne({ _id: req.params.id }, tarefa);
+    res.redirect("/");
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+};
+
 module.exports = {
   getAllTarefas,
   createTarefa,
   getById,
   updateOneTarefa,
   deleteOneTarefa,
+  tarefaCheck,
 };

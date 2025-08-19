@@ -37,9 +37,9 @@
     <section id="tarefas">
         <ul>
             <% listaTarefas.forEach((tarefa)=> {%>
-                <li>
+                <li class="check-<%= tarefa.check %>">
                     <div>
-                        <a href="/"><%= tarefa.tarefa %>  </a>
+                        <a href="/check/<%= tarefa._id %>" class="check-<%= tarefa.check %>"><%= tarefa.tarefa %>  </a>
                         <span>Criado em <%= tarefa.date.toLocaleDateString('pt-BR') %></span>
                     </div>
                     <div>
