@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const conexaoDb = () => {
     mongoose.connect(
-        "mongodb+srv://root:admin@listatarefas.afp3hbb.mongodb.net/",
+        process.env.DB_URI,
         {
             useNewUrlParser: true,
             useUnifiedTopology: true,
